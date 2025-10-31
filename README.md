@@ -1,4 +1,5 @@
 # 🎯 Guess My Number!
+## 🧩 Version 1.0.0
 
 A fun and interactive **JavaScript number guessing game** built while learning DOM manipulation in the *Complete JavaScript Course*. This project helped me practice working with the DOM, handling events, and managing game state using core JavaScript concepts.
 
@@ -36,3 +37,11 @@ A fun and interactive **JavaScript number guessing game** built while learning D
 4. You start with **20 points**, losing one for every wrong guess.  
 5. Try to beat your **high score!**  
 6. Click **“Again!”** to restart.
+
+## 🧩 Version 1.0.1
+
+Added an event listener to the `.check` button that:
+- Reads the user’s guess from the input field
+- Logs the guess to the console
+- Displays “🚫 No number!” if no guess is entered
+
