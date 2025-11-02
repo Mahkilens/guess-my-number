@@ -3,10 +3,6 @@
 // Generate a random secret number between 1 and 20
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-// Display the secret number (for testing/debugging)
-// Later, you can hide this by setting textContent to '?'
-document.querySelector('.number').textContent = secretNumber;
-
 // Initialize player score to 20
 let score = 20;
 
@@ -23,10 +19,22 @@ document.querySelector('.check').addEventListener('click', function () {
   if (!guess) {
     document.querySelector('.message').textContent = '🚫 No number!';
   }
+
   // When the player guesses correctly
-  else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '🎉 Correct Number!';
-  }
+  else if (guess === secretNumber) { 
+    document.querySelector('.message').textContent = '🎉 Correct  Number!'; 
+
+    // Display the secret number (for testing/debugging)
+    // Later, you can hide this by setting textContent to '?'
+    document.querySelector('.number').textContent = secretNumber;
+
+    // Background color changes to green after it's correct 
+    document.querySelector('body').style.backgroundColor = '#60b347';
+
+    // Number box get's bigger after guessing correctly 
+    document.querySelector('.number').style.width = '30rem';
+  } 
+    
   // When the guess is too high
   else if (guess > secretNumber) {
     if (score > 1) {
@@ -37,7 +45,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = '💥 You lost the game!';
       document.querySelector('.score').textContent = 0;
     }
+
   }
+    
   // When the guess is too low
   else if (guess < secretNumber) {
     if (score > 1) {
@@ -49,5 +59,40 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+// Event handler: Create a function > (button) to restart the game
+document.querySelector('.again').addEventListener('click', function () {
+
+  let score = 20;
+  let secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+  ///////////////////////////////////////////////////////
+  // Reset the data of the fields!!!
+
+    // Reset the score counter back to 20
+  document.querySelector('.score').textContent = score;
+
+  // Reset the secretNumber back to random/hide
+  document.querySelector('.number').textContent = secretNumber;
+
+  /////////////////////////////////////////////////////////////
+  // Reset the UI to match!!!
+
+  // Reset the message input field
+  document.querySelector('.message').textContent = 'Start Guessing...';
+
+  // Reset the number input field
+  document.querySelector('.number').textContent = '?';
+
+  // Reset the guess input field
+  document.querySelector('.guess').value = '';
+
+  // Reset the original background color (#222)
+  document.querySelector('body').style.backgroundColor = '#222';
+
+  // Reset the original number width (15rem)
+  document.querySelector('.number').style.width = '15rem';
+
 });
 
