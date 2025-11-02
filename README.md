@@ -45,3 +45,28 @@ Added an event listener to the `.check` button that:
 - Logs the guess to the console
 - Displays “🚫 No number!” if no guess is entered
 
+/**
+## 🧩 Version 1.0.2
+ * 🎮 Game Reset Event Handler
+ * ----------------------------
+ * Triggered when the player clicks the "Again!" button.
+ *
+ * 🧩 Purpose:
+ * Resets the entire game to its initial state, allowing the player
+ * to start over with a fresh score and new secret number.
+ *
+ * 🧠 Functionality:
+ * - Reinitializes game data (score = 20, new secret number)
+ * - Resets the displayed score and feedback message
+ * - Hides the secret number (sets it back to '?')
+ * - Clears the player’s guess input field
+ * - Restores the original background color (#222)
+ * - Resets the number box width to its default (15rem)
+ *
+ * 💡 Concepts Practiced:
+ * - DOM manipulation (`querySelector`, `textContent`, `style`)
+ * - Event handling with `addEventListener()`
+ * - Managing and resetting application state
+ */
+
+
