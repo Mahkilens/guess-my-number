@@ -69,4 +69,14 @@ Added an event listener to the `.check` button that:
  * - Managing and resetting application state
  */
 
+## 🧩 Version 1.0.3
+
+### 🔧 Changes Made
+- ✨ Refactored code for better readability and structure  
+- 🧩 Added `displayMessage()` helper function to reduce repetition  
+- 🎯 Simplified “Too High / Too Low” logic into one clean block  
+- 🔁 Fixed reset functionality — `Again` button now fully resets the game  
+- 🎨 Improved UI styling (background color and number box resizing)  
+- 🧠 Added clear comments for learning and documentation clarity  
+
 
