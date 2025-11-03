@@ -1,98 +1,68 @@
 'use strict';
 
-// Generate a random secret number between 1 and 20
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+// ✅ Generate a random secret number between 1 and 20
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-// Initialize player score to 20
+// ✅ Initialize player score and high score
 let score = 20;
+let highscore = 0;
 
-// Add event listener to the "Check!" button
-// This runs the function every time the button is clicked
+// ✅ Helper function: Display messages on screen
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
+// ✅ Event listener for "Check!" button
 document.querySelector('.check').addEventListener('click', function () {
-  // Get the number the player entered and convert it from string to number
+  // Get user input and convert it from string → number
   const guess = Number(document.querySelector('.guess').value);
-
-  // Log the guessed number and its type (for debugging)
   console.log(guess, typeof guess);
 
-  // When there is no input
+  // 🚫 No input
   if (!guess) {
-    document.querySelector('.message').textContent = '🚫 No number!';
-  }
+    displayMessage('🚫 No number!');
 
-  // When the player guesses correctly
-  else if (guess === secretNumber) { 
-    document.querySelector('.message').textContent = '🎉 Correct  Number!'; 
-
-    // Display the secret number (for testing/debugging)
-    // Later, you can hide this by setting textContent to '?'
+  // 🎉 Correct guess
+  } else if (guess === secretNumber) {
+    displayMessage('🎉 Correct Number!');
     document.querySelector('.number').textContent = secretNumber;
 
-    // Background color changes to green after it's correct 
+    // Change background and enlarge number box
     document.querySelector('body').style.backgroundColor = '#60b347';
-
-    // Number box get's bigger after guessing correctly 
     document.querySelector('.number').style.width = '30rem';
-  } 
-    
-  // When the guess is too high
-  else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📈 Too high!';
-      score--; // Decrease score by 1
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
-      document.querySelector('.score').textContent = 0;
+
+    // Update high score if current score is higher
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
     }
 
-  }
-    
-  // When the guess is too low
-  else if (guess < secretNumber) {
+  // 📈 Too high / 📉 Too low
+  } else {
     if (score > 1) {
-      document.querySelector('.message').textContent = '📉 Too low!';
-      score--; // Decrease score by 1
+      displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+      score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
+      displayMessage('💥 You lost the game!');
       document.querySelector('.score').textContent = 0;
     }
   }
 });
 
-// Event handler: Create a function > (button) to restart the game
+// ✅ Event listener for "Again!" button – resets the game
 document.querySelector('.again').addEventListener('click', function () {
+  // Reset variables
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-  let score = 20;
-  let secretNumber = Math.trunc(Math.random() * 20) + 1;
-
-  ///////////////////////////////////////////////////////
-  // Reset the data of the fields!!!
-
-    // Reset the score counter back to 20
+  // Reset UI elements
+  displayMessage('Start guessing...');
   document.querySelector('.score').textContent = score;
-
-  // Reset the secretNumber back to random/hide
-  document.querySelector('.number').textContent = secretNumber;
-
-  /////////////////////////////////////////////////////////////
-  // Reset the UI to match!!!
-
-  // Reset the message input field
-  document.querySelector('.message').textContent = 'Start Guessing...';
-
-  // Reset the number input field
   document.querySelector('.number').textContent = '?';
-
-  // Reset the guess input field
   document.querySelector('.guess').value = '';
 
-  // Reset the original background color (#222)
+  // Reset styles
   document.querySelector('body').style.backgroundColor = '#222';
-
-  // Reset the original number width (15rem)
   document.querySelector('.number').style.width = '15rem';
-
 });
-
