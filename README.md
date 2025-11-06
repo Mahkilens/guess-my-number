@@ -80,3 +80,15 @@ Added an event listener to the `.check` button that:
 - 🧠 Added clear comments for learning and documentation clarity  
 
 
+## 🧑‍💻 Author
+**Makhilens**  
+🔗 [@Makhilens](https://github.com/Makhilens)
+
+---
+
+## 🙏 Credits
+This project was inspired by the **“Guess My Number”** challenge from [Jonas Schmedtmann’s](https://www.udemy.com/user/jonasschmedtmann/)  
+*The Complete JavaScript Course 2025: From Zero to Expert!*
+
+I recreated and customized it independently to deepen my understanding of **DOM manipulation**, **event handling**, and **JavaScript fundamentals**.
+
